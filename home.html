@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>wordflow - home</title>
+    <link rel="stylesheet" href="style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+    <h1>Конвертер Excel в JSON</h1>
+    <input type="file" id="excelFile" accept=".xlsx, .xls">
+    <button onclick="convertExcelToJson()">Конвертировать</button>
+    <div id="output"></div>
+
+    <script>
+        function convertExcelToJson() {
+    const fileInput = document.getElementById('excelFile');
+    const outputDiv = document.getElementById('output');
+
+    if (!fileInput.files.length) {
+        alert('Пожалуйста, выберите Excel‑файл');
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        try {
+            // Читаем файл
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+
+            // Берём первый лист
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+
+            // Конвертируем в JSON
+            const jsonData = XLSX.utils.sheet_to_json(worksheet, {
+                header: 1, // Получаем массив массивов
+                defval: '' // Заменяем пустые ячейки на пустую строку
+            });
+
+            // Преобразуем в массив объектов (если есть заголовки)
+            if (jsonData.length > 0) {
+                const headers = jsonData[0]; // Первая строка — заголовки
+                const rows = jsonData.slice(1); // Остальные строки — данные
+
+                const result = rows.map(row => {
+                    const obj = {};
+                    headers.forEach((header, index) => {
+                        obj[header] = row[index];
+                    });
+                    return obj;
+                });
+
+                // Выводим результат
+                outputDiv.innerHTML = `
+                    <h3>Результат конвертации:</h3>
+                    <pre>${JSON.stringify(result, null, 2)}</pre>
+                    <button onclick="downloadJson()">Скачать JSON</button>
+                `;
+
+                // Сохраняем данные для скачивания
+                window.jsonDataToDownload = result;
+            } else {
+                outputDiv.innerHTML = '<p>Файл пуст</p>';
+            }
+        } catch (error) {
+            outputDiv.innerHTML = `<p style="color: red;">Ошибка: ${error.message}</p>`;
+        }
+    };
+
+    reader.readAsArrayBuffer(file);
+}
+
+// Функция для скачивания JSON
+function downloadJson() {
+    if (!window.jsonDataToDownload) {
+        alert('Нет данных для скачивания');
+        return;
+    }
+
+    const jsonString = JSON.stringify(window.jsonDataToDownload, null, 2);
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'converted_data.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+</script>
+
+    </script>
+		
+    </div>
+</body>
+</html>

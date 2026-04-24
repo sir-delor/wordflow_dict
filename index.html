@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Умный Глоссарий</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>📚 Мой Глоссарий</h1>
+    <div class="controls">
+        <div class="search-wrapper">
+            <input type="text" id="search" placeholder="Поиск термина или определения...">
+            <button id="theme-toggle" class="theme-btn">🌙 Тёмная тема</button>
+        </div>
+        <div class="alphabet" id="alphabet"></div>
+        <div id="stats" class="stats">Загрузка...</div>
+    </div>
+    <div id="glossary" class="container">Ожидание данных...</div>
+
+    <!-- Скрипты как модули -->
+    <script type="module" src="dict-script.js"></script>
+    <script type="module" src="theme-script.js"></script>
+</body>
+</html>
