@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* Светлая тема (по умолчанию) */
+=======
+>>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
 :root {
   --bg-color: #f0f2f5;
   --text-color: #333;
@@ -7,14 +10,25 @@
   --border-color: #e0e0e0;
   --shadow: rgba(0, 0, 0, 0.1);
   --accent-color: #007bff;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
   --html-color: #ffa500;
   --css-color: #0000ff;
   --js-color: #ffff00;
   --php-color: #630099;
+<<<<<<< HEAD
   --transition-speed: 0.3s; /* Вынес общую переменную сюда */
 }
 
 /* Темная тема (активируется при наличии атрибута) */
+=======
+
+  font-size: 17px;
+}
+
+>>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
 [data-theme="dark"] {
   --bg-color: #18191a;
   --text-color: #e4e6eb;
@@ -22,6 +36,7 @@
   --input-bg: #3a3b3c;
   --border-color: #3e4042;
   --shadow: rgba(0, 0, 0, 0.3);
+<<<<<<< HEAD
 }
 
 /* Блок поиска (адаптивный под тему) */
@@ -43,4 +58,42 @@
 }
 
 
+=======
+
+  /* Тайминги анимаций */
+  --transition-speed: 0.3s;
+}
+
+/* Адаптивные переменные (планшеты) */
+@media (768px <= width <= 1024px) {
+  :root {
+    --logo-size: 3rem;
+    --main-padding: 2rem;
+  }
+  .container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .logo-svg {
+    font-size: 2.5rem;
+  }
+}
+
+/* Крупные экраны */
+@media (width >= 1025px) {
+  :root {
+    --logo-size: 4rem;
+  }
+  .logo-svg {
+    font-size: 3rem;
+  }
+}
+
+/* Большие экраны */
+@media (width >= 1440px) {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+>>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
 }

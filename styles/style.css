@@ -11,7 +11,11 @@ body {
 h1 {
   /* text-align: center;*/
   color: var(--accent-color);
+<<<<<<< HEAD
 font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
+=======
+  font-size: 2.5rem;
+>>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
   font-weight: 800;
 }
 
@@ -26,6 +30,7 @@ font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
   z-index: 100;
 }
 
+<<<<<<< HEAD
 
 
 
@@ -39,10 +44,17 @@ font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
   align-items: center;
   max-width: 600px; /* ограничим ширину для лучшего вида */
   margin: 0 auto;
+=======
+.search-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+>>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
 }
 
 #search {
   flex-grow: 1;
+<<<<<<< HEAD
   padding: 14px 45px 14px 16px; /* увеличиваем правый паддинг под кнопку */
   background: var(--input-bg);
   color: var(--text-color);
@@ -119,6 +131,18 @@ font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
     right: 5px;   отступ справа 
     z-index: 1000;  чтобы кнопка была поверх других элементов */
     padding: 0.5rem 0.5rem 0.7rem;
+=======
+  padding: 12px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+}
+
+.theme-btn {
+  padding: 10px 20px;
+>>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
   cursor: pointer;
   border: none;
   border-radius: 8px;
@@ -127,6 +151,7 @@ font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
   font-weight: bold;
 }
 
+<<<<<<< HEAD
 
 
 
@@ -204,6 +229,8 @@ font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
 
 
 
+=======
+>>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
 #alphabet,
 #tech-filter {
   display: flex;
@@ -455,6 +482,7 @@ code {
 .close-modal:hover {
   transform: scale(1.1);
 }
+<<<<<<< HEAD
 
 /* оформление футер */ 
 .main-footer {
@@ -521,3 +549,5 @@ code {
     justify-content: center;
   }
 }
+=======
+>>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
