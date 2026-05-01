@@ -1,15 +1,183 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>wordflow - about</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📚 Умный Глоссарий</title>
+  
+  <link rel="stylesheet" type="text/css" href="fonts/fonts.css" />
+  <link rel="stylesheet" href="styles/global.css" />
+  <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/style.css" />
+  
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+
+  <style>
+    /* Базовые отступы */
+    .main, .glossary-article {
+      padding: 20px 16px;
+    }
+
+    /* Стили для описания сайта */
+    .glossary-article {
+      max-width: 800px;
+      margin: 20px auto; /* Добавил отступ сверху/снизу */
+      background: var(--card-bg, white); /* Используем вашу переменную фона */
+      color: var(--text-color, #333);    /* Используем вашу переменную текста */
+      padding: 40px; /* Убрал странный отступ 101px */
+      border-radius: 10px;
+      box-shadow: 0 2px 15px var(--shadow, rgba(0, 0, 0, 0.1));
+    }
+
+    .article-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.2;
+      color: var(--accent-color, #2980b9);
+    }
+
+    .glossary-article p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Цитата */
+    .quote {
+      background-color: rgba(52, 152, 219, 0.1); /* Сделал прозрачным для темной темы */
+      border-left: 4px solid #3498db;
+      padding: 20px 25px;
+      margin: 30px 0;
+      font-style: italic;
+      border-radius: 0 5px 5px 0;
+    }
+
+    .quote-author {
+      text-align: right;
+      font-weight: bold;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+
+    /* Секции */
+    .concept-section, .glossary-info, .goals-section {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px dashed var(--border-color, #ddd);
+    }
+
+    .concept-section h2, .glossary-info h2, .goals-section h2 {
+      color: #3498db;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      border-bottom: 2px solid #3498db;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    /* Списки */
+    .components-list, .features-list, .goals-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .components-list li, .features-list li, .goals-list li {
+      padding: 8px 0;
+      padding-left: 25px;
+      position: relative;
+      font-size: 1rem;
+    }
+
+    /* Маркер списка (точка) */
+    .components-list li::before, 
+    .features-list li::before, 
+    .goals-list li::before {
+      content: "•"; /* Исправлен битый символ */
+      color: #3498db;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    .components-list strong, .goals-list strong {
+      color: var(--accent-color, #2c3e50);
+    }
+  </style>
 </head>
-<body>
+
+  <body>
     <div class="container">
-        <h1>wordflow</h1>
-        <h2>Страница: about</h2>
-        <p>Это автоматически созданная страница.</p>
+    <h1>📚 HTML@Dict</h1>
     </div>
-</body>
+
+
+
+<article class="glossary-article">
+  <header class="article-header">
+    <h1 class="article-title">Преодоление трудностей в изучении HTML и CSS: роль чёткого понимания терминов</h1>
+  </header>
+
+  <section class="intro-section">
+    <p>Каким бы лёгким ни было обучение, на пути освоения нового предмета неизбежно возникают трудности. Чаще всего они связаны с пониманием специальных терминов и их применением на практике.</p>
+    
+    <blockquote class="quote">
+      <p>«Определяйте значения слов, и вы избавите мир от половины заблуждений».</p>
+      <footer class="quote-author">— Рене Декарт</footer>
+    </blockquote>
+
+    <p>Эта мысль особенно актуальна при изучении языков разметки и стилей: чёткое понимание терминов помогает избежать путаницы и ускоряет прогресс.</p>
+  </section>
+
+  <section class="concept-section">
+    <h2>Ключевой принцип: концептуальное понимание</h2>
+    <p>Оно включает два компонента:</p>
+    <ul class="features-list">
+      <li><strong>Осведомлённость</strong> — знакомство с термином и его определением.</li>
+      <li><strong>Практическое владение</strong> — способность применять знания в реальных задачах и оперировать понятиями при разработке.</li>
+    </ul>
+  </section>
+
+  <section class="glossary-info">
+    <h2>О глоссарии</h2>
+    <p>Настоящая статья представляет собой глоссарий терминов, которые встретились мне в процессе изучения HTML и CSS. Здесь собраны понятия от базовых до продвинутых. Каждый термин сопровождается:</p>
+    <ul class="components-list">
+      <li>Кратким определением;</li>
+      <li>Примером использования в коде;</li>
+      <li>Пояснением практического применения.</li>
+    </ul>
+  </section>
+
+  <section class="goals-section">
+    <h2>Цель глоссария</h2>
+    <p>Помочь начинающим разработчикам:</p>
+    <ul class="goals-list">
+      <li>Систематизировать знания;</li>
+      <li>Быстрее преодолевать «точки застревания»;</li>
+      <li>Уверенно переходить от теории к реальным проектам.</li>
+    </ul>
+  </section>
+</article>
+
+
+
+
+		<footer class="main-footer">
+  <div class="footer-container">
+    <div class="footer-info">
+      <span class="footer-logo">HTML@Dict</span>
+      <p class="copyright">&copy; 2026 Умный Глоссарий. Все права защищены.</p>
+    </div>
+    
+    <nav class="footer-nav">
+      <a href="index.html" class="footer-link">Главная</a>
+	  <a href="home.html" class="footer-link">Словать обслуживание</a>
+      <a href="about.html" class="footer-link">О проекте</a>
+      <a href="contact.html" class="footer-link">Контакты</a>
+    </nav>
+  </div>
+</footer>
+
+  </body>
 </html>

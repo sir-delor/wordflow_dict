@@ -1,0 +1,46 @@
+/* Светлая тема (по умолчанию) */
+:root {
+  --bg-color: #f0f2f5;
+  --text-color: #333;
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --accent-color: #007bff;
+  --html-color: #ffa500;
+  --css-color: #0000ff;
+  --js-color: #ffff00;
+  --php-color: #630099;
+  --transition-speed: 0.3s; /* Вынес общую переменную сюда */
+}
+
+/* Темная тема (активируется при наличии атрибута) */
+[data-theme="dark"] {
+  --bg-color: #18191a;
+  --text-color: #e4e6eb;
+  --card-bg: #242526;
+  --input-bg: #3a3b3c;
+  --border-color: #3e4042;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Блок поиска (адаптивный под тему) */
+.search-wrapper {
+  /* Используем глобальные переменные, чтобы поиск менялся вместе с темой */
+  --search-bg: var(--input-bg);
+  --search-border: var(--border-color);
+  --search-text: var(--text-color);
+  --search-focus-color: var(--accent-color);
+  --search-radius: 12px;
+  --search-transition: all var(--transition-speed) ease;
+  
+  /* Применяем их */
+  background-color: var(--search-bg);
+  border: 1px solid var(--search-border);
+  color: var(--search-text);
+  border-radius: var(--search-radius);
+  transition: var(--search-transition);
+}
+
+
+}
