@@ -15,70 +15,47 @@
     <link rel="icon" href="img/code-dict.ico" />
   </head>
   <body>
+  
+    <header>
+    <div class="container">
     <h1>📚 HTML@Dict</h1>
+    </div>
+	
+	      <button id="theme-toggle" class="theme-btn">🌙</button>
+</header>
+
 
     <div class="controls">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> e291728d66f593141830dfc924a4c1c5aaf8e9eb
-
-
-<div class="search-wrapper">
-  <input
-    type="text"
-    id="search"
-    placeholder="Поиск термина или определения..."
-  />
-  <!-- Кнопка сброса -->
-  <button type="button" id="search-reset" class="search-reset" aria-label="Очистить поиск">
-   
-  </button>
-  
-</div>
-
-
-
-
-<!-- Скрытый чекбокс — "хранитель состояния" -->
-<input type="checkbox" id="filter-toggle" class="filter-checkbox">
-
-<!-- Кнопка-триггер (связана с чекбоксом через id) -->
-<label for="filter-toggle" class="filter-btn">🔍 Открыть фильтры</label>
-        <button id="theme-toggle" class="theme-btn">🌙</button>
-
-
-<!-- Общий блок, который будем прятать -->
-<div class="filter-container">
-  <div id="tech-filter" class="tech-filters">Технологии...</div>
-  <div class="alphabet" id="alphabet">А Б В Г Д...</div>
-  
-  <!-- Кнопка закрытия (тот же label, просто внутри) -->
-  <label for="filter-toggle" class="close-btn">Закрыть</label>
-</div>
-
-
-
-
-
-
-<<<<<<< HEAD
-=======
-=======
       <div class="search-wrapper">
         <input
           type="text"
           id="search"
           placeholder="Поиск термина или определения..."
         />
-        <button id="theme-toggle" class="theme-btn">🌙 Тёмная тема</button>
+        <!-- Кнопка сброса -->
+        <button
+          type="button"
+          id="search-reset"
+          class="search-reset"
+          aria-label="Очистить поиск"
+        ></button>
       </div>
 
-      <div id="tech-filter" class="tech-filters"></div>
-      <!-- Добавлен класс для стилей -->
-      <div class="alphabet" id="alphabet"></div>
->>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
->>>>>>> e291728d66f593141830dfc924a4c1c5aaf8e9eb
+      <!-- Скрытый чекбокс — "хранитель состояния" -->
+      <input type="checkbox" id="filter-toggle" class="filter-checkbox" />
+
+      <!-- Кнопка-триггер (связана с чекбоксом через id) -->
+      <label for="filter-toggle" class="filter-btn">🔍 Открыть фильтры</label>
+
+
+      <!-- Общий блок, который будем прятать -->
+      <div class="filter-container">
+        <div id="tech-filter" class="tech-filters">Технологии...</div>
+        <div class="alphabet" id="alphabet">А Б В Г Д...</div>
+
+        <!-- Кнопка закрытия (тот же label, просто внутри) -->
+        <label for="filter-toggle" class="close-btn">Закрыть</label>
+      </div>
 
       <div id="stats" class="stats">Загрузка...</div>
     </div>
@@ -92,45 +69,29 @@
         <div id="modal-body"></div>
       </div>
     </div>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> e291728d66f593141830dfc924a4c1c5aaf8e9eb
-	
-	<footer class="main-footer">
-  <div class="footer-container">
-    <div class="footer-info">
-      <span class="footer-logo">HTML@Dict</span>
-      <p class="copyright">&copy; 2026 Умный Глоссарий. Все права защищены.</p>
-    </div>
-    
-    <nav class="footer-nav">
-      <a href="index.html" class="footer-link">Главная</a>
-	  <a href="home.html" class="footer-link">Словарь обслуживание</a>
-      <a href="about.html" class="footer-link">О проекте</a>
-      <a href="contact.html" class="footer-link">Контакты</a>
-    </nav>
-  </div>
-</footer>
 
+    <footer class="main-footer">
+      <div class="footer-container">
+        <div class="footer-info">
+          <span class="footer-logo">HTML@Dict</span>
+          <p class="copyright">
+            &copy; 2026 Умный Глоссарий. Все права защищены.
+          </p>
+        </div>
 
-	
-	
-<!-- скрипты словаря -->
-<script type="module" src="js/theme-script.js"></script>
-<script type="module" src="js/script.js"></script>
-<script type="module" src="js/modal.js"></script>
-<script type="module" src="js/dict-script.js"></script>
+        <nav class="footer-nav">
+          <a href="index.html" class="footer-link">Главная</a>
+          <a href="home.html" class="footer-link">Обслуживание словаря</a>
+          <a href="about.html" class="footer-link">О проекте</a>
+          <a href="contact.html" class="footer-link">Контакты</a>
+        </nav>
+      </div>
+    </footer>
 
-	
-<<<<<<< HEAD
-=======
-=======
-
+    <!-- скрипты словаря -->
+    <script type="module" src="js/theme-script.js"></script>
+    <script type="module" src="js/script.js"></script>
     <script type="module" src="js/modal.js"></script>
     <script type="module" src="js/dict-script.js"></script>
-    <script type="module" src="js/theme-script.js"></script>
->>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
->>>>>>> e291728d66f593141830dfc924a4c1c5aaf8e9eb
   </body>
 </html>

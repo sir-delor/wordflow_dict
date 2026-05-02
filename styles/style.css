@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-﻿body {
-=======
 body {
->>>>>>> e291728d66f593141830dfc924a4c1c5aaf8e9eb
-  font-family: "Inter", sans-serif;
   background: var(--bg-color);
   color: var(--text-color);
   padding: 20px;
@@ -12,18 +7,16 @@ body {
   transition: 0.3s;
 }
 
+header {
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 h1 {
   /* text-align: center;*/
   color: var(--accent-color);
-<<<<<<< HEAD
-font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
-=======
-<<<<<<< HEAD
-font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
-=======
-  font-size: 2.5rem;
->>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
->>>>>>> e291728d66f593141830dfc924a4c1c5aaf8e9eb
+  font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
   font-weight: 800;
 }
 
@@ -38,40 +31,16 @@ font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
   z-index: 100;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> e291728d66f593141830dfc924a4c1c5aaf8e9eb
-
-
-
-
-
-
-
 .search-wrapper {
   position: relative;
   display: flex;
   align-items: center;
   max-width: 600px; /* ограничим ширину для лучшего вида */
   margin: 0 auto;
-<<<<<<< HEAD
-=======
-=======
-.search-wrapper {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
->>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
->>>>>>> e291728d66f593141830dfc924a4c1c5aaf8e9eb
 }
 
 #search {
   flex-grow: 1;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> e291728d66f593141830dfc924a4c1c5aaf8e9eb
   padding: 14px 45px 14px 16px; /* увеличиваем правый паддинг под кнопку */
   background: var(--input-bg);
   color: var(--text-color);
@@ -80,7 +49,7 @@ font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
   outline: none;
   font-size: 16px;
   transition: var(--transition);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 /* Акцент при наведении и фокусе */
@@ -140,29 +109,12 @@ font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
 }
 */
 
-
-
 .theme-btn {
-/*	    position: fixed;
+  /*	    position: fixed;
     bottom: 5px;  отступ снизу 
     right: 5px;   отступ справа 
     z-index: 1000;  чтобы кнопка была поверх других элементов */
-    padding: 0.5rem 0.5rem 0.7rem;
-<<<<<<< HEAD
-=======
-=======
-  padding: 12px;
-  background: var(--input-bg);
-  color: var(--text-color);
-  border: 2px solid var(--border-color);
-  border-radius: 8px;
-  outline: none;
-}
-
-.theme-btn {
-  padding: 10px 20px;
->>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
->>>>>>> e291728d66f593141830dfc924a4c1c5aaf8e9eb
+  padding: 0.5rem 0.5rem 0.7rem;
   cursor: pointer;
   border: none;
   border-radius: 8px;
@@ -170,15 +122,6 @@ font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
   color: white;
   font-weight: bold;
 }
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> e291728d66f593141830dfc924a4c1c5aaf8e9eb
-
-
-
-
 
 /* 1. Прячем сам чекбокс */
 .filter-checkbox {
@@ -194,10 +137,10 @@ font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
   left: 0;
   width: 100%;
   background: #fff;
-  box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
   padding: 20px;
   z-index: 1000;
-  
+
   /* Анимация скрытия */
   transform: translateY(100%);
   visibility: hidden;
@@ -211,7 +154,8 @@ font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
 }
 
 /* 4. Стили для кнопок-label */
-.filter-btn, .close-btn {
+.filter-btn,
+.close-btn {
   display: inline-block;
   cursor: pointer;
   padding: 10px 20px;
@@ -219,6 +163,8 @@ font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
   color: white;
   border-radius: 8px;
   text-align: center;
+  margin-top: 1rem;
+  
 }
 
 .close-btn {
@@ -232,31 +178,6 @@ font-size: clamp(1.875rem, 0.9813rem + 4.2056vw, 3rem);
   pointer-events: none; /* чтобы нельзя было нажать еще раз, пока открыто */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
->>>>>>> e291728d66f593141830dfc924a4c1c5aaf8e9eb
 #alphabet,
 #tech-filter {
   display: flex;
@@ -318,16 +239,102 @@ dl {
   box-shadow: 0 2px 8px var(--shadow);
   border-top: 5px solid #ccc;
 }
-.tag {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 11px;
-  color: white;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  font-weight: bold;
+
+span .tag [data-tech="html"] {
+  background: var(--html-color);
 }
+
+[data-tech="css"] .modal-header-info {
+  background: var(--css-color);
+}
+
+[data-tech="javascript"] .modal-header-info {
+  background: var(--js-color);
+}
+
+[data-tech="php"] .modal-header-info {
+  background: var(--php-color);
+}
+
+/* Базовый стиль тега */
+.tag {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Раскраска на основе данных */
+.tag[data-tech="html"] {
+  background: var(--html-color);
+  color: #000;
+}
+.tag[data-tech="css"] {
+  background: var(--css-color);
+  color: #fff;
+}
+.tag[data-tech="javascript"] {
+  background: var(--js-color);
+  color: #000;
+}
+.tag[data-tech="php"] {
+  background: var(--php-color);
+  color: #fff;
+}
+
+/* Цвет для прочих технологий (если не совпало) */
+.tag[data-tech="other"] {
+  background: var(--border-color);
+  color: var(--text-color);
+}
+
+/* Стили для уровня сложности */
+.badge {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  margin-left: 8px;
+}
+
+.level-базовый {
+  border-color: #28a745;
+  color: #28a745;
+}
+.level-продвинутый {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+/* Уточнение для тега в модалке, если нужно крупнее */
+.modal-header-info .tag {
+  font-size: 0.9rem;
+}
+
+.code-block {
+  background: #1e1e1e; /* Темный фон для кода (стиль VS Code) */
+  color: #d4d4d4;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto; /* Полоса прокрутки, если код длинный */
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-top: 10px;
+  border: 1px solid #333;
+}
+
+.modal-code-section {
+  margin-top: 20px;
+}
+
+.modal-code-section strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
 code {
   background: #272822;
   color: #f8f8f2;
@@ -508,12 +515,8 @@ code {
 .close-modal:hover {
   transform: scale(1.1);
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> e291728d66f593141830dfc924a4c1c5aaf8e9eb
 
-/* оформление футер */ 
+/* оформление футер */
 .main-footer {
   margin-top: 40px;
   padding: 30px 0;
@@ -563,23 +566,14 @@ code {
   color: var(--accent-color);
 }
 
-
-
-
-
 /* Адаптивность для мобилок */
 @media (width <= 768px) {
   .footer-container {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .footer-nav {
     justify-content: center;
   }
 }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 803490dbd3852bdcf0ad8bae6bbf3484d7c8ea1e
->>>>>>> e291728d66f593141830dfc924a4c1c5aaf8e9eb

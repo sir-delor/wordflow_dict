@@ -15,6 +15,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   </head>
   <body>
+  
+  <header>
+    <div class="container">
+    <h1>📚 HTML@Dict</h1>
+    </div>
+	
+	      <button id="theme-toggle" class="theme-btn">🌙</button>
+</header>
+
     <div class="container">
       <h1>Конвертер Excel в JSON</h1>
 
@@ -24,7 +33,27 @@
       </div>
 
       <div id="output"></div>
+	      </div>
+	  
+	  		<footer class="main-footer">
+  <div class="footer-container">
+    <div class="footer-info">
+      <span class="footer-logo">HTML@Dict</span>
+      <p class="copyright">&copy; 2026 Умный Глоссарий. Все права защищены.</p>
+    </div>
+    
+    <nav class="footer-nav">
+      <a href="index.html" class="footer-link">Главная</a>
+	  <a href="home.html" class="footer-link">Обслуживание словаря</a>
+      <a href="about.html" class="footer-link">О проекте</a>
+      <a href="contact.html" class="footer-link">Контакты</a>
+    </nav>
+  </div>
+</footer>
 
+
+	    <script type="module" src="js/theme-script.js"></script>
+		
       <script>
         function convertExcelToJson() {
           const fileInput = document.getElementById("excelFile");
@@ -96,6 +125,8 @@
           URL.revokeObjectURL(url);
         }
       </script>
-    </div>
+
+	
+
   </body>
 </html>

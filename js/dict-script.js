@@ -1,7 +1,16 @@
+// dict-script.js
 console.log("dict-script.js: начало выполнения");
 
-let glossaryData = [];
-let filteredData = [];
+// 1. Импорт всех библиотек словаря
+import { htmlData } from "../data/dict-data-html.js";
+import { cssData } from "../data/dict-data-css.js";
+import { jsData } from "../data//dict-data-js.js";
+import { phpData } from "../data//dict-data-php.js";
+
+// 2. Объединение в единый массив
+let glossaryData = [...htmlData, ...cssData, ...jsData, ...phpData];
+
+let filteredData = [...glossaryData];
 let currentIndex = 0;
 const ITEMS_PER_PAGE = 10;
 
@@ -88,27 +97,26 @@ function renderNextBatch() {
 
   nextBatch.forEach((item) => {
     const card = document.createElement("dl");
-    const techClass = String(item["Технология"] || "other")
-      .toLowerCase()
-      .trim();
+    const techName = String(item["Технология"] || "other").trim();
+    const techClass = techName.toLowerCase();
 
     card.className = `card ${techClass}`;
     card.style.cursor = "pointer";
     card.onclick = () => openModal(item);
 
     card.innerHTML = `
-            <dt>${escapeHtml(item["Термин (RU/EN)"])}</dt>
-            <dd class="tag-wrapper">
-                <span class="tag">${techClass}</span>
-            </dd>
-            <dd class="definition">
-                ${escapeHtml(item["Определение"])}
-            </dd>
-            <!-- Ссылка-подсказка -->
-            <dd class="more-link-wrapper">
-                <span class="more-link">Подробнее →</span>
-            </dd>
-        `;
+        <dt>${escapeHtml(item["Термин (RU/EN)"])}</dt>
+        <dd class="tag-wrapper">
+            <!-- Добавляем data-tech для CSS и выводим оригинальное имя технологии -->
+            <span class="tag" data-tech="${techClass}">${techName}</span>
+        </dd>
+        <dd class="definition">
+            ${escapeHtml(item["Определение"])}
+        </dd>
+        <dd class="more-link-wrapper">
+            <span class="more-link">Подробнее →</span>
+        </dd>
+    `;
     container.appendChild(card);
   });
 
@@ -203,11 +211,17 @@ function openModal(item) {
   const modal = document.getElementById("modal");
   const modalBody = document.getElementById("modal-body");
 
+  // Подготовка данных
+  const techName = String(item["Технология"] || "other").trim();
+  const techClass = techName.toLowerCase();
+
   modalBody.innerHTML = `
-        <div class="modal-header-info">
-            <span class="tag">${item["Технология"]}</span>
-            ${item["уровень"] ? `<span class="badge">${item["уровень"]}</span>` : ""}
-        </div>
+    <div class="modal-header-info">
+      <!-- Добавляем атрибут data-tech для подхвата цветов из CSS -->
+      <span class="tag" data-tech="${techClass}">${techName}</span>
+      
+      ${item["уровень"] ? `<span class="badge level-${item["уровень"].toLowerCase()}">${item["уровень"]}</span>` : ""}
+    </div>
 
         <dl class="modal-definition-list">
             <!-- Главный заголовок -->
@@ -254,16 +268,16 @@ function openModal(item) {
                 : ""
             }
 
-            ${
-              item["Пример кода"]
-                ? `
-                <dd class="modal-code">
-                    <strong>Пример кода:</strong>
-                    <pre><code>${escapeHtml(item["Пример кода"])}</code></pre>
-                </dd>
-            `
-                : ""
-            }
+${
+  item["Пример кода"]
+    ? `
+  <dd class="modal-code-section">
+    <strong>Пример кода:</strong>
+    <pre class="code-block"><code>${escapeHtml(item["Пример кода"])}</code></pre>
+  </dd>`
+    : ""
+}
+
 
             ${
               item["Примечания"]
