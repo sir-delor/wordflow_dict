@@ -11,6 +11,7 @@
   --css-color: #0000ff;
   --js-color: #ffff00;
   --php-color: #630099;
+    --mysql-color: #00758f;
   --transition-speed: 0.3s; /* Вынес общую переменную сюда */
 }
 
@@ -41,6 +42,3 @@
   border-radius: var(--search-radius);
   transition: var(--search-transition);
 }
-
-
-
