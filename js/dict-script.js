@@ -1,78 +1,62 @@
 // dict-script.js
 console.log("dict-script.js: начало выполнения");
 
-// 1. Импорт всех библиотек словаря
+// 1. Импорты (словарей)
 import { htmlData } from "../data/dict-data-html.js";
 import { cssData } from "../data/dict-data-css.js";
-import { jsData } from "../data//dict-data-js.js";
-import { phpData } from "../data//dict-data-php.js";
+import { jsData } from "../data/dict-data-js.js";
+import { phpData } from "../data/dict-data-php.js";
+import { mysqlData } from "../data/dict-data-mysql.js";
 
-// 2. Объединение в единый массив
-let glossaryData = [...htmlData, ...cssData, ...jsData, ...phpData];
+// 2. ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+function escapeHtml(text) {
+    if (typeof text !== "string") return "";
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;"); 
+}
+
+// 3. ДАННЫЕ И СОСТОЯНИЕ
+const glossaryData = [...htmlData, ...cssData, ...jsData, ...phpData, ...mysqlData].filter(
+    (item) => item["Термин (RU/EN)"] && String(item["Термин (RU/EN)"]).trim() !== ""
+);
 
 let filteredData = [...glossaryData];
 let currentIndex = 0;
 const ITEMS_PER_PAGE = 10;
 
-// Состояние фильтров
 let currentTech = "all";
 let currentLetter = "all";
 let searchQuery = "";
 
-// Вспомогательные функции
-function escapeHtml(text) {
-  if (typeof text !== "string") return "";
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
-
-// 1. Загрузка данных
-async function loadGlossary() {
-  try {
-    const { glossaryDataRaw } = await import("../data/data-dict.js");
-    glossaryData = glossaryDataRaw.filter(
-      (item) =>
-        item["Термин (RU/EN)"] && String(item["Термин (RU/EN)"]).trim() !== "",
-    );
-
-    renderAlphabet();
-    renderTechFilters();
-    applyFilters();
-  } catch (error) {
-    console.error("Ошибка загрузки:", error);
-    const container = document.getElementById("glossary");
-    if (container)
-      container.innerHTML = `<div class="error">Ошибка: ${error.message}</div>`;
-  }
-}
-
-// 2. Единая фильтрация
+// 4. ЛОГИКА ФИЛЬТРАЦИИ
 function applyFilters() {
-  filteredData = glossaryData.filter((item) => {
-    const tech = String(item["Технология"] || "")
-      .toLowerCase()
-      .trim();
-    const term = String(item["Термин (RU/EN)"]).toLowerCase();
-    const definition = String(item["Определение"] || "").toLowerCase();
+    filteredData = glossaryData.filter((item) => {
+        // Добавляем .trim() к технологии, чтобы "MySQL " и "MySQL" совпадали
+        const tech = String(item["Технология"] || "").toLowerCase().trim();
+        const term = String(item["Термин (RU/EN)"] || "").toLowerCase();
+        const definition = String(item["Определение"] || "").toLowerCase();
 
-    const matchTech = currentTech === "all" || tech === currentTech;
-    const matchLetter =
-      currentLetter === "all" ||
-      term.trim().toUpperCase().startsWith(currentLetter);
-    const matchSearch =
-      searchQuery === "" ||
-      term.includes(searchQuery) ||
-      definition.includes(searchQuery);
+        const matchTech = currentTech === "all" || tech === currentTech;
+        const matchLetter = currentLetter === "all" || term.trim().toUpperCase().startsWith(currentLetter);
+        const matchSearch = searchQuery === "" || term.includes(searchQuery) || definition.includes(searchQuery);
 
-    return matchTech && matchLetter && matchSearch;
-  });
-
-  resetAndRender();
+        return matchTech && matchLetter && matchSearch;
+    });
+    
+    // Проверка для отладки
+    console.log(`Фильтр: ${currentTech}, Найдено: ${filteredData.length}`);
+    
+    if (typeof resetAndRender === "function") {
+        resetAndRender();
+    }
 }
 
+
+// 5. ФУНКЦИИ ОТРИСОВКИ 
 function resetAndRender() {
   currentIndex = 0;
   document.getElementById("glossary").innerHTML = "";
@@ -318,4 +302,26 @@ ${
   };
 }
 
-loadGlossary();
+
+// 6. ОБРАБОТЧИКИ СОБЫТИЙ (Слушатели)
+const searchInput = document.getElementById("search");
+if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+        searchQuery = e.target.value.toLowerCase();
+        applyFilters();
+    });
+}
+
+
+// 7. ИНИЦИАЛИЗАЦИЯ 
+function init() {
+    console.log("Загружено всего записей:", glossaryData.length);
+    // Проверяем наличие функций перед вызовом, чтобы не было ошибок
+    if (typeof renderAlphabet === "function") renderAlphabet();
+    if (typeof renderTechFilters === "function") renderTechFilters();
+    applyFilters();
+}
+
+init(); 
+
+
