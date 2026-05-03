@@ -5,8 +5,8 @@
 }
 
 body {
-  margin: auto;
   font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  margin: 0; /* сброс стандартных отступов body */
 }
 
 h1,

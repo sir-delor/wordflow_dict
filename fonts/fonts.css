@@ -1,7 +1,7 @@
 @font-face {
-  font-family: "Inter";
+  font-family: "Inter-normal";
   src:
-    url("/fonts/Inter-Italic-VariableFont_opsz\,wght.woff2") format("woff2"),
+    url("/fonts/Inter-VariableFont_opsz\,wght.woff2") format("woff2"),
     url("/fonts/Inter-VariableFont_opsz_wght.woff") format("woff"),
     url("fonts/Inter-VariableFont_opsz,wght.ttf") format("ttf");
   font-weight: 100 900; /* Диапазон весов */
@@ -10,7 +10,7 @@
 }
 
 @font-face {
-  font-family: "Inter";
+  font-family: "Inter-Italic";
   src:
     url("/fonts/Inter-Italic-VariableFont_opsz\,wght.woff2") format("woff2"),
     url("/fonts/Inter-Italic-VariableFont_opsz_wght.woff") format("woff"),
