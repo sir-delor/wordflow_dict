@@ -72,13 +72,13 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #eee;
+  background: var(--accent-color);
   border: none;
   border-radius: 50%; /* круглый фон */
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 1;
   cursor: pointer;
-  color: #666;
+    color: var(--search-text);
   opacity: 0;
   pointer-events: none;
   transition: var(--transition);
@@ -256,6 +256,11 @@ span .tag [data-tech="html"] {
   background: var(--php-color);
 }
 
+[data-tech="mysql"] .modal-header-info {
+  background: var( --mysql-color);
+}
+
+
 /* Базовый стиль тега */
 .tag {
   padding: 4px 12px;
@@ -280,6 +285,11 @@ span .tag [data-tech="html"] {
 }
 .tag[data-tech="php"] {
   background: var(--php-color);
+  color: #fff;
+}
+
+.tag[data-tech="mysql"] {
+  background: var(--mysql-color);
   color: #fff;
 }
 
@@ -374,7 +384,7 @@ code {
 [data-tech="javascript"],
 .javascript .tag {
   background: var(--js-color);
-  color: var(--text-color);
+  color: var(--accent-color);
 }
 
 .php {
@@ -386,6 +396,17 @@ code {
   background: var(--php-color);
   color: var(--bg-color);
 }
+
+.mysql {
+  border-top-color: var(--mysql-color);
+}
+
+[data-tech="mysql"],
+.mysql .tag {
+  background: var(--mysql-color);
+  color: var(--bg-color);
+}
+
 
 .stats {
   margin-top: 10px;
