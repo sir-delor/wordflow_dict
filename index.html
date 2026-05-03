@@ -15,53 +15,45 @@
     <link rel="icon" href="img/code-dict.ico" />
   </head>
   <body>
-  
     <header>
-    <div class="container">
-    <h1>📚 HTML@Dict</h1>
-    </div>
-	
-	      <button id="theme-toggle" class="theme-btn">🌙</button>
-</header>
+      <div class="container">
+        <h1>📚 HTML@Dict</h1>
+      </div>
 
+      <button id="theme-toggle" class="theme-btn">🌙</button>
+    </header>
 
     <div class="controls">
+      <div class="search-wrapper">
+        <input
+          type="text"
+          id="search"
+          placeholder="Поиск термина или определения..."
+        />
+        <!-- Кнопка сброса -->
+        <button
+          type="button"
+          id="search-reset"
+          class="search-reset"
+          aria-label="Очистить поиск"
+        ></button>
+      </div>
 
+      <!-- Скрытый чекбокс — "хранитель состояния" -->
+      <input type="checkbox" id="filter-toggle" class="filter-checkbox" />
 
-<div class="search-wrapper">
-  <input
-    type="text"
-    id="search"
-    placeholder="Поиск термина или определения..."
-  />
-  <!-- Кнопка сброса -->
-  <button type="button" id="search-reset" class="search-reset" aria-label="Очистить поиск">
-   
-  </button>
-  
-</div>
+      <!-- Кнопка-триггер (связана с чекбоксом через id) -->
+      <label for="filter-toggle" class="filter-btn">🔍 Открыть фильтры</label>
+      <button id="theme-toggle" class="theme-btn">🌙</button>
 
+      <!-- Общий блок, который будем прятать -->
+      <div class="filter-container">
+        <div id="tech-filter" class="tech-filters">Технологии...</div>
+        <div class="alphabet" id="alphabet">А Б В Г Д...</div>
 
-
-
-<!-- Скрытый чекбокс — "хранитель состояния" -->
-<input type="checkbox" id="filter-toggle" class="filter-checkbox">
-
-<!-- Кнопка-триггер (связана с чекбоксом через id) -->
-<label for="filter-toggle" class="filter-btn">🔍 Открыть фильтры</label>
-        <button id="theme-toggle" class="theme-btn">🌙</button>
-
-
-<!-- Общий блок, который будем прятать -->
-<div class="filter-container">
-  <div id="tech-filter" class="tech-filters">Технологии...</div>
-  <div class="alphabet" id="alphabet">А Б В Г Д...</div>
-  
-  <!-- Кнопка закрытия (тот же label, просто внутри) -->
-  <label for="filter-toggle" class="close-btn">Закрыть</label>
-</div>
-
-
+        <!-- Кнопка закрытия (тот же label, просто внутри) -->
+        <label for="filter-toggle" class="close-btn">Закрыть</label>
+      </div>
 
       <div class="search-wrapper">
         <input
@@ -78,18 +70,15 @@
         ></button>
       </div>
 
-
       <div id="tech-filter" class="tech-filters"></div>
       <!-- Добавлен класс для стилей -->
       <div class="alphabet" id="alphabet"></div>
-
 
       <!-- Скрытый чекбокс — "хранитель состояния" -->
       <input type="checkbox" id="filter-toggle" class="filter-checkbox" />
 
       <!-- Кнопка-триггер (связана с чекбоксом через id) -->
       <label for="filter-toggle" class="filter-btn">🔍 Открыть фильтры</label>
-
 
       <!-- Общий блок, который будем прятать -->
       <div class="filter-container">
@@ -99,7 +88,6 @@
         <!-- Кнопка закрытия (тот же label, просто внутри) -->
         <label for="filter-toggle" class="close-btn">Закрыть</label>
       </div>
-
 
       <div id="stats" class="stats">Загрузка...</div>
     </div>
@@ -114,24 +102,23 @@
       </div>
     </div>
 
+    <footer class="main-footer">
+      <div class="footer-container">
+        <div class="footer-info">
+          <span class="footer-logo">HTML@Dict</span>
+          <p class="copyright">
+            &copy; 2026 Умный Глоссарий. Все права защищены.
+          </p>
+        </div>
 
-	
-	<footer class="main-footer">
-  <div class="footer-container">
-    <div class="footer-info">
-      <span class="footer-logo">HTML@Dict</span>
-      <p class="copyright">&copy; 2026 Умный Глоссарий. Все права защищены.</p>
-    </div>
-    
-    <nav class="footer-nav">
-      <a href="index.html" class="footer-link">Главная</a>
-	  <a href="home.html" class="footer-link">Словарь обслуживание</a>
-      <a href="about.html" class="footer-link">О проекте</a>
-      <a href="contact.html" class="footer-link">Контакты</a>
-    </nav>
-  </div>
-</footer>
-
+        <nav class="footer-nav">
+          <a href="index.html" class="footer-link">Главная</a>
+          <a href="home.html" class="footer-link">Словарь обслуживание</a>
+          <a href="about.html" class="footer-link">О проекте</a>
+          <a href="contact.html" class="footer-link">Контакты</a>
+        </nav>
+      </div>
+    </footer>
 
     <footer class="main-footer">
       <div class="footer-container">
@@ -142,15 +129,11 @@
           </p>
         </div>
 
-
-	
-	
-<!-- скрипты словаря -->
-<script type="module" src="js/theme-script.js"></script>
-<script type="module" src="js/script.js"></script>
-<script type="module" src="js/modal.js"></script>
-<script type="module" src="js/dict-script.js"></script>
-
+        <!-- скрипты словаря -->
+        <script type="module" src="js/theme-script.js"></script>
+        <script type="module" src="js/script.js"></script>
+        <script type="module" src="js/modal.js"></script>
+        <script type="module" src="js/dict-script.js"></script>
 
         <nav class="footer-nav">
           <a href="index.html" class="footer-link">Главная</a>
@@ -161,7 +144,6 @@
       </div>
     </footer>
 
-
     <!-- скрипты словаря -->
     <script type="module" src="js/theme-script.js"></script>
     <script type="module" src="js/script.js"></script>
@@ -169,7 +151,5 @@
     <script type="module" src="js/dict-script.js"></script>
 
     <script type="module" src="js/theme-script.js"></script>
-
-
   </body>
 </html>
