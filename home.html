@@ -55,78 +55,79 @@
 	    <script type="module" src="js/theme-script.js"></script>
 		
       <script>
-        function convertExcelToJson() {
-          const fileInput = document.getElementById("excelFile");
-          const outputDiv = document.getElementById("output");
+function convertExcelToJson() {
+    const fileInput = document.getElementById("excelFile");
+    const outputDiv = document.getElementById("output");
 
-          if (!fileInput.files.length) {
-            alert("Пожалуйста, выберите Excel‑файл");
-            return;
-          }
+    if (!fileInput.files.length) {
+        alert("Пожалуйста, выберите Excel‑файл");
+        return;
+    }
 
-          const file = fileInput.files[0];
-          const reader = new FileReader();
+    const file = fileInput.files[0];
+    const reader = new FileReader();
 
-          reader.onload = function (e) {
-            try {
-              const data = new Uint8Array(e.target.result);
-              const workbook = XLSX.read(data, { type: "array" });
-              const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+    reader.onload = function (e) {
+        try {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: "array" });
+            
+            outputDiv.innerHTML = "<h3>Результаты обработки:</h3>";
 
-              // Конвертируем в JSON. Библиотека сама создаст объекты с ключами из шапки Excel
-              const jsonData = XLSX.utils.sheet_to_json(worksheet, {
-                defval: "", // Если ячейка пустая, будет пустая строка
-                raw: false, // Читать значения как строки (сохраняет форматирование)
-              });
+            // Перебираем все листы в книге
+            workbook.SheetNames.forEach((sheetName) => {
+                const worksheet = workbook.Sheets[sheetName];
+                const jsonData = XLSX.utils.sheet_to_json(worksheet, {
+                    defval: "",
+                    raw: false,
+                });
 
-              if (jsonData.length > 0) {
-                // Проверка: выведем список найденных полей в консоль для контроля
-                console.log("Найденные поля:", Object.keys(jsonData[0]));
+                if (jsonData.length > 0) {
+                    // Формируем имя файла на основе названия листа (приводим к нижнему регистру)
+                    const fileName = `dict-data-${sheetName.toLowerCase()}.js`;
+                    
+                    // Создаем контейнер для каждого листа
+                    const section = document.createElement("div");
+                    section.style.marginBottom = "20px";
+                    section.innerHTML = `
+                        <strong>Лист: ${sheetName}</strong> (записей: ${jsonData.length})<br>
+                        <button class="theme-btn" onclick="downloadSingleFile('${fileName}', ${JSON.stringify(jsonData).replace(/"/g, '&quot;')})">
+                            Скачать ${fileName}
+                        </button>
+                    `;
+                    outputDiv.appendChild(section);
+                }
+            });
 
-                outputDiv.innerHTML = `
-                    <h3>Готово! Найдено записей: ${jsonData.length}</h3>
-                    <p style="font-size: 0.9em; color: gray;">Поля: ${Object.keys(jsonData[0]).join(", ")}</p>
-                    <pre id="jsonPre"></pre>
-                    <button id="dlBtn" class="theme-btn">Скачать data-dict.js</button>
-                `;
-
-                document.getElementById("jsonPre").textContent =
-                  JSON.stringify(jsonData.slice(0, 3), null, 2) +
-                  "\n... и остальные записи";
-
-                window.jsonDataToDownload = jsonData;
-                document.getElementById("dlBtn").onclick = downloadJsFile;
-              } else {
-                outputDiv.innerHTML = "<p>Файл пуст</p>";
-              }
-            } catch (error) {
-              outputDiv.innerHTML = `<p style="color: red;">Ошибка: ${error.message}</p>`;
-            }
-          };
-          reader.readAsArrayBuffer(file);
+        } catch (error) {
+            outputDiv.innerHTML = `<p style="color: red;">Ошибка: ${error.message}</p>`;
+            console.error(error);
         }
+    };
+    reader.readAsArrayBuffer(file);
+}
 
-        function downloadJsFile() {
-          if (!window.jsonDataToDownload) return;
+// Универсальная функция для скачивания конкретного файла
+function downloadSingleFile(fileName, data) {
+    const dataString = JSON.stringify(data, null, 2);
+    
+    // Определяем имя переменной (например: htmlData, cssData, mysqlData)
+    // Убираем "dict-data-" и ".js", оставляя только суть
+    const varName = fileName.replace('dict-data-', '').replace('.js', '') + 'Data';
+    
+    // Теперь внутри файла будет: export const mysqlData = [...]
+    const fileContent = `export const ${varName} = ${dataString};`;
+    
+    const blob = new Blob([fileContent], { type: "application/javascript" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = fileName;
+    a.click();
+    URL.revokeObjectURL(url);
+}
 
-          const dataString = JSON.stringify(window.jsonDataToDownload, null, 2);
-          // Формируем финальный JS-файл
-          const fileContent = `export const glossaryDataRaw = ${dataString};`;
-
-          const blob = new Blob([fileContent], {
-            type: "application/javascript",
-          });
-          const url = URL.createObjectURL(blob);
-
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = "data-dict.js";
-          a.click();
-          URL.revokeObjectURL(url);
-        }
       </script>
-
-	
 
   </body>
 </html>
