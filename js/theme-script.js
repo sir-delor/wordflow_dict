@@ -1,15 +1,11 @@
-        // Тема
-        const themeToggle = document.getElementById('theme-toggle');
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeToggle.innerText = '☀️';
-        }
-
-        themeToggle.addEventListener('click', () => {
-            let isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            localStorage.setItem('theme', isDark ? 'light' : 'dark');
-            themeToggle.innerText = isDark ? '🌙' : '☀️';
-        });
-		
-		
+// Тема
+let themeToggle = document.getElementById("theme-toggle");
+("dark" === localStorage.getItem("theme") &&
+  (document.documentElement.setAttribute("data-theme", "dark"),
+  (themeToggle.innerText = "☀️")),
+  themeToggle.addEventListener("click", () => {
+    var e = "dark" === document.documentElement.getAttribute("data-theme");
+    (document.documentElement.setAttribute("data-theme", e ? "light" : "dark"),
+      localStorage.setItem("theme", e ? "light" : "dark"),
+      (themeToggle.innerText = e ? "🌙" : "☀️"));
+  }));

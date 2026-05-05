@@ -1,7 +1,9 @@
 /* Светлая тема (по умолчанию) */
 :root {
+
   --bg-color: #f0f2f5;
   --text-color: #333;
+  --text-heading: #003366;
   --card-bg: #ffffff;
   --input-bg: #ffffff;
   --border-color: #e0e0e0;

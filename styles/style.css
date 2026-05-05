@@ -3,7 +3,6 @@ body {
   gap: 0.8rem;
   background: var(--bg-color);
   color: var(--text-color);
-
   max-width: 1200px;
   margin: 0 auto;
   transition: 0.3s;
@@ -52,7 +51,7 @@ h1 {
   border: 2px solid var(--border-color);
   border-radius: 12px; /* более мягкие углы */
   outline: none;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   transition: var(--transition);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
@@ -130,8 +129,8 @@ h1 {
   cursor: pointer;
   border: none;
   border-radius: 8px;
-  background: #007bff;
-  color: white;
+  background: var(--accent-color);
+  color: var(--card-bg);
   font-weight: bold;
 }
 
@@ -148,7 +147,7 @@ h1 {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: #fff;
+  background: var(--card-bg);
   box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
   padding: 0.8rem;
   z-index: 1000;
@@ -171,10 +170,10 @@ h1 {
   display: inline-block;
   cursor: pointer;
   padding: 10px 20px;
-  background: #007bff;
-  color: var(--text-color);
-  font-size: 0.8rem;
-  border-radius: 8px;
+  background: var(--accent-color);
+  color: var(--card-bg);
+  font-size: 0.6rem;
+  border-radius: 5px;
   text-align: center;
 }
 
@@ -194,7 +193,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  margin-bottom: 10px; /* Чтобы блоки отделялись друг от друга */
+  margin-bottom: 10px;
 }
 
 .alphabet {
@@ -203,11 +202,33 @@ h1 {
   gap: 8px;
 }
 
+.letter {
+  /* Сброс стандартных стилей кнопки */
+  appearance: none;
+  border: 1px solid var(--border-color);
+  background: var(--input-bg);
+  font-family: inherit; /* Чтобы шрифт не сменился на системный */
+
+  /* Ваши текущие стили */
+  padding: 5px 10px;
+  color: var(--text-color);
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.letter:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
 .letter,
 .tech-btn {
   padding: 5px 10px;
   background: var(--input-bg);
-  color: var(--text-color); /* Добавлено, чтобы текст не пропадал */
+  color: var(--text-color);
   cursor: pointer;
   border-radius: 5px;
   border: 1px solid var(--border-color);
@@ -222,9 +243,19 @@ h1 {
   border-color: var(--accent-color);
 }
 
+.close-btn:focus {
+  outline: 2px solid white; /* На красном фоне белый фокус заметнее */
+  outline-offset: -4px; /* Внутри кнопки */
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+}
+
+.close-btn:active {
+  transform: scale(0.98); /* Эффект нажатия */
+}
+
 .container {
   display: grid;
-  gap: 20px;
+  gap: 0.9rem;
 }
 
 dt {
@@ -235,19 +266,20 @@ dt {
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif;
+  color: var(--text-heading);
 }
 
 dl {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center; /* Выравнивание по вертикали (по центру) */
-  gap: 15px; /* Расстояние между текстом и тегом */
+  gap: 0.8rem; /* Расстояние между текстом и тегом */
 }
 
 .definition,
 dt {
   border-left: 2px solid var(--accent-color);
-  padding-left: 5px;
+  padding-left: 0.4rem;
 }
 
 .definition {
@@ -263,6 +295,24 @@ dt {
   border-radius: 12px;
   box-shadow: 0 2px 8px var(--shadow);
   border-top: 5px solid #ccc;
+}
+
+.card:focus {
+  outline: 3px solid var(--accent-color); /* Цвет вашей основной темы */
+  outline-offset: 4px;
+  background-color: var(--hover-bg-color); /* Немного подсветить фон */
+  transform: translateY(-2px); /* Можно добавить легкий подъем */
+}
+
+/* Убираем стандартный синий контур, если карточка в фокусе при клике мышкой (опционально) */
+.card:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.modal-header-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 span .tag [data-tech="html"] {
@@ -382,6 +432,56 @@ code {
   overflow-x: auto;
 }
 
+/* Контейнер, чтобы теги шли в ряд и переносились */
+.related-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* Стили связанных терминов */
+.related-tag {
+    /* Ваши базовые стили */
+    background: #e7f3ff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    color: var(--text-heading);
+    display: inline-block;
+    border: 2px solid rgba(0, 123, 255, 0.5);
+    white-space: nowrap;
+    
+    /* Сброс стилей кнопки и подготовка к интерактиву */
+    font-family: inherit;
+    cursor: pointer;
+    line-height: normal;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+}
+
+/* Эффект при наведении */
+.related-tag:hover {
+    background: #007bff;
+    color: #ffffff;
+    border-color: #007bff;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Состояние фокуса для клавиатуры */
+.related-tag:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.3);
+}
+
+/* Активное состояние (нажатие) */
+.related-tag:active {
+    transform: translateY(0);
+    opacity: 0.8;
+}
+
+
 .html {
   border-top-color: var(--html-color);
 }
@@ -432,7 +532,7 @@ code {
 }
 
 .stats {
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   opacity: 0.7;
 }
 
@@ -507,7 +607,7 @@ code {
 /* Список описаний (Семантика) */
 .modal-definition-list {
   grid-template-columns: 1fr;
-  margin-top: 20px;
+  margin-top: 0.8rem;
   text-align: left;
 }
 
@@ -522,11 +622,13 @@ code {
   margin: 0 0 15px 0; /* Обнуление всех margin сразу */
   white-space: pre-line; /* Текст будет переноситься там, где есть перевод строки в данных */
   line-height: 1.6;
+  border-left: 2px solid var(--accent-color);
+  padding-left: 0.4rem;
 }
 
 .modal-definition-list dd strong {
   display: block;
-  color: #007bff;
+  color: var(--accent-color);
   font-size: 0.8rem;
   text-transform: uppercase;
   margin-bottom: 4px;
