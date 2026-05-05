@@ -11,7 +11,7 @@
   --css-color: #0000ff;
   --js-color: #ffff00;
   --php-color: #630099;
-    --mysql-color: #00758f;
+  --mysql-color: #00758f;
   --transition-speed: 0.3s; /* Вынес общую переменную сюда */
 }
 
@@ -34,7 +34,7 @@
   --search-focus-color: var(--accent-color);
   --search-radius: 12px;
   --search-transition: all var(--transition-speed) ease;
-  
+
   /* Применяем их */
   background-color: var(--search-bg);
   border: 1px solid var(--search-border);

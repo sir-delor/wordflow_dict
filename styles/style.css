@@ -3,7 +3,7 @@ body {
   gap: 0.8rem;
   background: var(--bg-color);
   color: var(--text-color);
-  padding: 1rem;
+
   max-width: 1200px;
   margin: 0 auto;
   transition: 0.3s;
@@ -13,6 +13,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 1rem;
 }
 
 h1 {
@@ -104,6 +105,13 @@ h1 {
   transform: scale(0.9);
 }
 
+.line-search {
+  display: flex;
+  justify-content: space-between; /* Разносит кнопку и статистику по краям */
+  align-items: center;
+  margin: 0.5rem;
+}
+
 /*
 .filter-theme {
 	    display: flex;
@@ -168,7 +176,6 @@ h1 {
   font-size: 0.8rem;
   border-radius: 8px;
   text-align: center;
-  margin-top: 1rem;
 }
 
 .close-btn {
@@ -425,8 +432,7 @@ code {
 }
 
 .stats {
-  margin-top: 10px;
-  font-size: 12px;
+  font-size: 0.8rem;
   opacity: 0.7;
 }
 
@@ -483,9 +489,9 @@ code {
   position: relative;
   background-color: var(--card-bg);
   color: var(--text-color);
-  padding: 25px;
-  width: min(85%, 600px); /* Умный расчет ширины */
-  max-height: 90vh; /* Чтобы окно не вылезало за экран */
+  padding: 1rem;
+  width: min(100%, 600px); /* Умный расчет ширины */
+  max-height: 95vh;
   overflow-y: auto; /* Прокрутка внутри окна */
   border-radius: 15px;
   opacity: 0;
@@ -510,7 +516,6 @@ code {
   font-weight: bold;
   padding-bottom: 10px;
   margin-bottom: 15px;
-  border-bottom: 2px solid var(--border-color);
 }
 
 .modal-definition-list dd p {
@@ -540,9 +545,9 @@ code {
 
 /* Кнопка закрытия */
 .close-modal {
-  position: absolute;
-  top: 10px;
-  right: 15px;
+  position: sticky;
+  top: 0;
+  left: 100%;
   font-size: 28px;
   line-height: 1;
   cursor: pointer;
@@ -555,8 +560,8 @@ code {
 
 /* оформление футер */
 .main-footer {
-  margin-top: 40px;
-  padding: 30px 0;
+  margin-top: 1rem;
+  padding: 1rem 0;
   background-color: var(--card-bg); /* Подстраивается под тему */
   border-top: 1px solid var(--border-color);
   width: 100%;
@@ -565,12 +570,12 @@ code {
 .footer-container {
   max-width: 1200px; /* Совпадает с вашим основным контейнером */
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 1rem;
 }
 
 .footer-logo {
@@ -601,6 +606,111 @@ code {
 
 .footer-link:hover {
   color: var(--accent-color);
+}
+
+/* Базовые отступы */
+/* Стили для описания сайта */
+.main,
+.glossary-article {
+  padding: 1rem;
+}
+
+.glossary-article {
+  max-width: 800px;
+  margin: 1rem auto;
+  background: var(--card-bg, white);
+  color: var(--text-color, #333);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 1rem var(--shadow, rgba(0, 0, 0, 0.1));
+}
+
+.article-title {
+  text-align: center;
+  margin-bottom: 30px;
+  line-height: 1.2;
+  color: var(--accent-color, #2980b9);
+}
+
+.glossary-article p {
+  margin-bottom: 1.2rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Цитата */
+.quote {
+  background-color: rgba(
+    52,
+    152,
+    219,
+    0.1
+  ); /* Сделал прозрачным для темной темы */
+  border-left: 4px solid #3498db;
+  padding: 20px 25px;
+  margin: 30px 0;
+  font-style: italic;
+  border-radius: 0 5px 5px 0;
+}
+
+.quote-author {
+  text-align: right;
+  font-weight: bold;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+/* Секции */
+.concept-section,
+.glossary-info,
+.goals-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--border-color, #ddd);
+}
+
+.concept-section h2,
+.glossary-info h2,
+.goals-section h2 {
+  color: #3498db;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #3498db;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Списки */
+.components-list,
+.features-list,
+.goals-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.components-list li,
+.features-list li,
+.goals-list li {
+  padding: 0.5rem 0;
+  padding-left: 1rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+/* Маркер списка (точка) */
+.components-list li::before,
+.features-list li::before,
+.goals-list li::before {
+  content: "•"; /* Исправлен битый символ */
+  color: var(--accent-color, #3498db);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.components-list strong,
+.goals-list strong {
+  color: var(--accent-color, #2c3e50);
 }
 
 /* Адаптивность для мобилок */
