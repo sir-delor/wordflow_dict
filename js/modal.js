@@ -34,7 +34,24 @@ export function openModal(item) {
             </dd>
             ${item["Перевод"] ? `<dd><strong>Перевод:</strong> ${escapeHtml(item["Перевод"])}</dd>` : ""}
             ${item["Синтаксис"] ? `<dd class="modal-syntax"><strong>Синтаксис:</strong> <code>${escapeHtml(item["Синтаксис"])}</code></dd>` : ""}
-            ${item["Основные атрибуты"] ? `<dd><strong>Основные атрибуты:</strong> <p>${escapeHtml(item["Основные атрибуты"])}</p></dd>` : ""}
+
+            ${item["Основные атрибуты"] ? `
+  <dd>
+    <strong>Основные атрибуты:</strong>
+    <ul style="list-style: none; padding-left: 0;">
+      ${item["Основные атрибуты"]
+        .split('\n')
+        .filter(line => line.trim() !== "")
+        .map(line => `
+          <li style="display: flex; align-items: baseline;">
+            <span style="color: #007bff; margin: 0 0.5rem; font-size: 0.9rem;">›</span> 
+            <span>${escapeHtml(line.replace(/^- /, ''))}</span>
+          </li>`)
+        .join('')}
+    </ul>
+  </dd>` 
+: ""}
+
  
 ${ item["Связанные термины"] ? `
     <dd class="modal-related">

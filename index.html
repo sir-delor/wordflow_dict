@@ -45,15 +45,17 @@
 
         <div class="line-search">
           <!-- Кнопка-триггер (связана с чекбоксом через id) -->
-<label for="filter-toggle" 
-       class="filter-btn" 
-       role="button" 
-       tabindex="0" 
-       aria-expanded="false" 
-       aria-controls="filter-container-id">
-       🔍 Открыть фильтры
-</label>
-          
+          <label
+            for="filter-toggle"
+            class="filter-btn"
+            role="button"
+            tabindex="0"
+            aria-expanded="false"
+            aria-controls="filter-container-id"
+          >
+            🔍 Открыть фильтры
+          </label>
+
           <!-- счетчик терминов -->
           <div id="stats" class="stats">Загрузка...</div>
         </div>
@@ -63,17 +65,18 @@
 
         <!-- Общий блок, который будем прятать -->
         <div class="filter-container">
-          <div id="tech-filter" class="tech-filters" >Технологии...</div>
+          <div id="tech-filter" class="tech-filters">Технологии...</div>
           <div class="alphabet" id="alphabet">А Б В Г Д...</div>
 
           <!-- Кнопка закрытия (тот же label, просто внутри) -->
-<label for="filter-toggle" 
-       class="close-btn" 
-       role="button" 
-       tabindex="0">
-  Закрыть
-</label>
-
+          <label
+            for="filter-toggle"
+            class="close-btn"
+            role="button"
+            tabindex="0"
+          >
+            Закрыть
+          </label>
         </div>
       </div>
 
@@ -96,15 +99,20 @@
             &copy; 2026 Умный Глоссарий. Все права защищены.
           </p>
         </div>
-
-        <nav class="footer-nav">
+        <button id="menu-btn" aria-expanded="false" aria-controls="footer-nav">
+          Меню
+        </button>
+        <nav id="footer-nav" class="footer-nav" hidden>
           <a href="index.html" class="footer-link">Главная</a>
-          <a href="home.html" class="footer-link">Словарь обслуживание</a>
+          <a href="home.html" class="footer-link">Словарь терминов</a>
           <a href="about.html" class="footer-link">О проекте</a>
           <a href="contact.html" class="footer-link">Контакты</a>
         </nav>
       </div>
     </footer>
+
+    <!-- Кнопка НА ВВЕРХ -->
+    <a href="#" id="scrollTopBtn">↑ Наверх</a>
 
     <!-- скрипты словаря -->
     <script type="module" src="js/theme-script.js"></script>

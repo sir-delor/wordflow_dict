@@ -609,6 +609,7 @@ code {
   grid-template-columns: 1fr;
   margin-top: 0.8rem;
   text-align: left;
+  gap: 2rem;
 }
 
 .modal-term {
@@ -694,21 +695,66 @@ code {
   margin-top: 5px;
 }
 
+/* навигация в футоре*/
 .footer-nav {
-  display: flex;
-  gap: 15px;
+  position: absolute;
+  bottom: 100%; /* Раскрывается вверх (от верхнего края кнопки) */
+  right: 0;     /* Выравнивание по правому краю кнопки/контейнера */
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 12px 0;
+  min-width: 200px;
+  list-style: none;
+  margin: 0;
+  transform-origin: top right; /* Точка трансформации — правый верхний угол */
+
+  /* Анимация появления/исчезновения */
+  opacity: 0;
+  transform: scaleY(0.8);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
+.footer-nav:not([hidden]) {
+  opacity: 1;
+  transform: scaleY(1);
+  pointer-events: auto;
+}
+
+.footer-nav[hidden] {
+  display: none; /* Скрываем полностью при атрибуте hidden */
+}
+
+/* Стили для ссылок внутри меню */
 .footer-link {
+  display: block;
+  padding: 10px 20px;
   text-decoration: none;
-  color: var(--text-color);
-  font-size: 0.95rem;
-  transition: color var(--transition-speed);
+  color: #333;
+  transition: background-color 0.2s;
 }
 
 .footer-link:hover {
-  color: var(--accent-color);
+  background-color: #f8f9fa;
 }
+
+/* Позиционирование контейнера (чтобы absolute внутри работал корректно) */
+footer {
+  position: relative; /* Важно для позиционирования .footer-nav */
+  padding: 20px;
+}
+
+#menu-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
 
 /* Базовые отступы */
 /* Стили для описания сайта */
@@ -814,6 +860,38 @@ code {
 .goals-list strong {
   color: var(--accent-color, #2c3e50);
 }
+
+/* стили для кнопки ↑ Наверх */
+html {
+  scroll-behavior: smooth;
+}
+
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 12px 18px;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  z-index: 1000;
+
+  /* Начальное состояние: невидима и чуть ниже своего места */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px); 
+  transition: all 0.4s ease; /* Плавность для всех свойств */
+}
+
+/* Состояние, когда кнопка должна появиться */
+#scrollTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0); /* Возвращается на место */
+}
+
+
 
 /* Адаптивность для мобилок */
 @media (width <= 768px) {
